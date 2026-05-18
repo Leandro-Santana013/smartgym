@@ -18,8 +18,8 @@ O **Amo Doce** é um site para uma confeitaria artesanal que oferece bolos, cupc
 Clone o repositório e abra o arquivo `index.html` no navegador:
 
 ```bash
-git clone https://github.com/Leandro-Santana013/amo-doce.git
-cd amo-doce
+git clone https://github.com/Leandro-Santana013/Amo_doce.git
+cd Amo_doce
 ```
 
 Não é necessário servidor — basta abrir o `index.html` diretamente no navegador.
