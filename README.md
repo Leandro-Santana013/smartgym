@@ -8,17 +8,17 @@ O **Amo Doce** é um site para uma confeitaria artesanal que oferece bolos, cupc
 
 ## 👥 Integrantes do grupo
 
-- Nome do integrante 1
-- Nome do integrante 2
-- Nome do integrante 3
-- Nome do integrante 4
+- Leandro da Conceição Santana
+- Nickolas Freire dos Santos
+- Thiago Henrique Oliveira Militão
+- Gabriel Nunes da Costa Anselmo
 
 ## 🚀 Como executar
 
 Clone o repositório e abra o arquivo `index.html` no navegador:
 
 ```bash
-git clone https://github.com/seu-usuario/amo-doce.git
+git clone https://github.com/Leandro-Santana013/amo-doce.git
 cd amo-doce
 ```
 
