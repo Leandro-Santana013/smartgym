@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria de fotos dos produtos artesanais da Amo Doce.">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Galeria — AmoDoce</title>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Ir para o conteúdo principal</a>
+
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="sr-only">Abrir menu de navegação</span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html" class="nav-active">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                    <li><a href="pedidos.html" class="button_fill">Fazer Pedido</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>Nossa <span>Galeria</span></h1>
+        <p>Delícias que encantam os olhos antes do paladar</p>
+    </section>
+
+    <main id="main" tabindex="-1">
+        <section class="galeria-section">
+            <ul class="galeria-grid" id="galeria-grid" aria-label="Galeria de fotos dos produtos">
+                <li class="galeria-item" data-index="0">
+                    <img src="../img/Produtos/copo_da_felicidade_morango.png"
+                         alt="Copo da Felicidade com morango"
+                         data-legenda="Copo da Felicidade — morango com creme e brownie">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+                <li class="galeria-item" data-index="1">
+                    <img src="../img/Produtos/Bolo_Vulcao_Morango.png"
+                         alt="Bolo Vulcão de chocolate"
+                         data-legenda="Bolo Vulcão — chocolate com ganache de morango">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+                <li class="galeria-item" data-index="2">
+                    <img src="../img/Produtos/Bolo_de_Laranja.png"
+                         alt="Bolo de laranja caseiro"
+                         data-legenda="Bolo Caseiro — sabor laranja com calda cítrica">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+                <li class="galeria-item" data-index="3">
+                    <img src="../img/bolos.jpeg"
+                         alt="Seleção de bolos artesanais"
+                         data-legenda="Seleção especial — bolos artesanais com coberturas generosas">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+                <li class="galeria-item" data-index="4">
+                    <img src="../img/Produtos/copo_da_felicidade_morango.png"
+                         alt="Copo da felicidade vista lateral"
+                         data-legenda="Copo da Felicidade — camadas irresistíveis">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+                <li class="galeria-item" data-index="5">
+                    <img src="../img/Produtos/Bolo_Vulcao_Morango.png"
+                         alt="Bolo vulcão detalhe cobertura"
+                         data-legenda="Bolo Vulcão — detalhe da cobertura de ganache">
+                    <div class="galeria-overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i>
+                    </div>
+                </li>
+            </ul>
+        </section>
+    </main>
+
+    <div class="lightbox-overlay" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Visualizador de imagem">
+        <button class="lightbox-fechar" id="lightbox-fechar" aria-label="Fechar galeria">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <button class="lightbox-nav lightbox-anterior" id="lightbox-anterior" aria-label="Imagem anterior">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <div class="lightbox-conteudo">
+            <img src="" alt="" id="lightbox-img">
+            <p class="lightbox-legenda" id="lightbox-legenda"></p>
+            <p class="lightbox-contador" id="lightbox-contador"></p>
+        </div>
+        <button class="lightbox-nav lightbox-proximo" id="lightbox-proximo" aria-label="Próxima imagem">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
+    </div>
+
+    <footer>
+        <section>
+            <div>
+                <div>
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </div>
+                <p>Delícias artesanais, feito para você.</p>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Especialidades</h3>
+                <ul>
+                    <li>Copo da Felicidade</li>
+                    <li>Bolo Vulcão</li>
+                    <li>Bolo Caseiro</li>
+                </ul>
+            </div>
+        </section>
+        <p>© 2025 Amo Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5513974135864" class="btn-whatsapp-flutuante" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="sr-only">Falar conosco pelo WhatsApp</span>
+    </a>
+
+    <script src="../js/galeria.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avaliações dos clientes da Amo Doce — leia e deixe a sua opinião.">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Avaliações — AmoDoce</title>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Ir para o conteúdo principal</a>
+
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="sr-only">Abrir menu de navegação</span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html" class="nav-active">Avaliações</a></li>
+                    <li><a href="pedidos.html" class="button_fill">Fazer Pedido</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>O que nossos <span>clientes</span> dizem</h1>
+        <p>Deixe sua avaliação e inspire outros amantes de doces</p>
+    </section>
+
+    <main id="main" tabindex="-1">
+        <section class="avaliacoes-section">
+            <div class="avaliacoes-layout">
+
+                <div class="avaliacao-form-area">
+                    <h2>Deixe sua avaliação</h2>
+                    <form id="form-avaliacao" novalidate>
+
+                        <div class="form-group">
+                            <label for="av-nome">Seu nome <span class="req" aria-hidden="true">*</span></label>
+                            <input type="text" id="av-nome" name="av-nome" placeholder="Como devemos te chamar?" required aria-required="true" aria-describedby="erro-av-nome">
+                            <span class="erro-msg" id="erro-av-nome" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="av-produto">Produto avaliado <span class="req" aria-hidden="true">*</span></label>
+                            <select id="av-produto" name="av-produto" required aria-required="true" aria-describedby="erro-av-produto">
+                                <option value="" disabled selected>Selecione um produto</option>
+                                <option value="Copo da Felicidade">Copo da Felicidade</option>
+                                <option value="Copo de Chocolate">Copo de Chocolate</option>
+                                <option value="Bolo Vulcão">Bolo Vulcão</option>
+                                <option value="Bolo Caseiro">Bolo Caseiro</option>
+                                <option value="Bolo de Festa">Bolo de Festa</option>
+                                <option value="Cesta de Doces">Cesta de Doces</option>
+                            </select>
+                            <span class="erro-msg" id="erro-av-produto" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nota <span class="req" aria-hidden="true">*</span></label>
+                            <div class="estrelas-input" id="estrelas-input" role="group" aria-label="Selecione a nota de 1 a 5 estrelas">
+                                <button type="button" class="estrela-btn" data-valor="1" aria-label="1 estrela">★</button>
+                                <button type="button" class="estrela-btn" data-valor="2" aria-label="2 estrelas">★</button>
+                                <button type="button" class="estrela-btn" data-valor="3" aria-label="3 estrelas">★</button>
+                                <button type="button" class="estrela-btn" data-valor="4" aria-label="4 estrelas">★</button>
+                                <button type="button" class="estrela-btn" data-valor="5" aria-label="5 estrelas">★</button>
+                            </div>
+                            <input type="hidden" id="nota-valor" value="">
+                            <span class="erro-msg" id="erro-nota" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="av-comentario">Comentário <span class="req" aria-hidden="true">*</span></label>
+                            <textarea id="av-comentario" name="av-comentario" rows="4" placeholder="Conte-nos sua experiência..." required aria-required="true" aria-describedby="erro-av-comentario"></textarea>
+                            <span class="erro-msg" id="erro-av-comentario" aria-live="polite"></span>
+                        </div>
+
+                        <button type="submit" class="button_fill btn-enviar">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar Avaliação
+                        </button>
+                    </form>
+                </div>
+
+                <div class="avaliacoes-lista-area">
+                    <div class="avaliacoes-lista-header">
+                        <h2>Avaliações</h2>
+                        <span class="contador-avaliacoes" id="contador-avaliacoes" aria-live="polite">0 avaliações</span>
+                    </div>
+
+                    <div class="sem-avaliacoes" id="sem-avaliacoes">
+                        <i class="fa-regular fa-star"></i>
+                        <p>Ainda não há avaliações.</p>
+                        <p>Seja o primeiro a compartilhar sua experiência!</p>
+                    </div>
+
+                    <ul class="lista-avaliacoes" id="lista-avaliacoes" aria-label="Lista de avaliações dos clientes"></ul>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <div>
+                <div>
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </div>
+                <p>Delícias artesanais, feito para você.</p>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Especialidades</h3>
+                <ul>
+                    <li>Copo da Felicidade</li>
+                    <li>Bolo Vulcão</li>
+                    <li>Bolo Caseiro</li>
+                </ul>
+            </div>
+        </section>
+        <p>© 2025 Amo Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5513974135864" class="btn-whatsapp-flutuante" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="sr-only">Falar conosco pelo WhatsApp</span>
+    </a>
+
+    <script src="../js/avaliacoes.js"></script>
+</body>
+
+</html>

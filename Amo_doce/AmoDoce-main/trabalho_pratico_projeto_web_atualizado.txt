@@ -1,0 +1,194 @@
+Trabalho Prático em Grupo — Projeto Web com HTML, CSS, JavaScript, DOM, Eventos e Git
+
+2. Objetivo do trabalho
+
+O objetivo deste trabalho é desenvolver, em grupo, um projeto web utilizando os conhecimentos trabalhados na disciplina de Programação de Sítios para Internet, incluindo HTML, CSS, JavaScript, manipulação do DOM, eventos, organização de código e uso de repositório Git.
+
+O tema do projeto será livre, desde que atenda aos requisitos técnicos definidos neste enunciado.
+
+3. Organização dos grupos
+
+O trabalho deverá ser desenvolvido em grupos de até quatro integrantes, podendo haver, excepcionalmente, um grupo com cinco integrantes.
+
+Cada integrante deverá participar efetivamente da implementação do projeto e deverá ser capaz de explicar, durante a apresentação, partes do código-fonte e os commits realizados no repositório.
+
+4. Forma de entrega
+
+A entrega deverá ser realizada exclusivamente por meio do Microsoft Teams.
+
+Para cada etapa do cronograma, será criada uma nova atividade no Microsoft Teams. A entrega deverá conter um arquivo de texto com as seguintes informações:
+
+- nome completo dos membros do grupo;
+- nome ou link do repositório Git do projeto.
+
+5. Cronograma e pontuação das etapas
+
+O cronograma do projeto está dividido em três entregas parciais e uma apresentação final:
+
+Etapa | Data de entrega | Pontuação | Descrição
+Primeira entrega | 17/05 | 0,5 ponto | Repositório GitHub criado e configurado com os membros do grupo.
+Segunda entrega | 20/05 | 1 ponto | Scaffold do projeto, contendo a estrutura inicial de pastas e arquivos.
+Terceira entrega | 30/05 | 2,5 pontos | Entrega final do projeto implementado.
+Apresentação final | 03/06 | 7 pontos | Apresentação do trabalho e avaliação individual, com arguição sobre os commits e o código do projeto.
+
+A avaliação de cada etapa considerará apenas os commits realizados até a respectiva data de entrega definida no cronograma.
+
+Commits realizados após a data de entrega de uma etapa não serão considerados para a avaliação daquela etapa.
+
+Caso os commits necessários para comprovar a realização da etapa estejam registrados apenas após a data de entrega correspondente, a etapa poderá receber nota zero.
+
+6. Requisitos obrigatórios do projeto
+
+O projeto deverá atender aos seguintes requisitos obrigatórios:
+
+1. O tema do projeto é livre, desde que não envolva conteúdo ilegal, ofensivo ou extremamente antiético.
+
+2. O projeto deverá conter, no mínimo, seis páginas.
+
+3. Pelo menos quatro páginas deverão conter interação com o usuário por meio de eventos e manipulação do DOM.
+
+4. Pelo menos uma página deverá conter manipulação completa do DOM, contemplando:
+
+   - inserção de elementos ou conteúdos;
+   - alteração de elementos ou conteúdos;
+   - remoção de elementos ou conteúdos;
+   - leitura de elementos ou conteúdos.
+
+5. Pelo menos uma página deverá utilizar traversal/traversing no DOM.
+
+7. Funcionalidades adicionais — desafio
+
+As funcionalidades abaixo são adicionais, classificadas como desafio, e não são obrigatórias:
+
+1. Implementação de templates, como tema escuro e tema claro.
+
+2. Uso de LocalStorage para implementar funcionalidade relacionada à manipulação completa do DOM.
+
+3. Uso de recursos do ECMAScript 6, 7 e 8, como:
+
+   - semântica e sintaxe funcional;
+   - promises;
+   - Fetch API ou XMLHttpRequest para requisições AJAX a uma API;
+   - outros recursos equivalentes.
+
+4. Evitar o uso de variáveis globais.
+
+Caso algum grupo implemente funcionalidades adicionais, o critério de comparação com os demais grupos poderá impactar negativamente a nota dos grupos que não implementarem funcionalidades equivalentes.
+
+Observação: esse critério poderá ser detalhado pelo professor, a fim de esclarecer como as funcionalidades adicionais influenciarão a avaliação comparativa entre os grupos.
+
+8. Requisitos da primeira entrega
+
+A primeira entrega, no valor de 0,5 ponto, deverá conter:
+
+1. repositório GitHub criado;
+
+2. repositório configurado com os membros do grupo;
+
+3. arquivo de texto entregue no Microsoft Teams contendo:
+
+   - nome completo dos membros do grupo;
+   - nome ou link do repositório Git do projeto.
+
+9. Requisitos da segunda entrega
+
+A segunda entrega, no valor de 1 ponto, deverá conter:
+
+1. scaffold inicial do projeto criado;
+
+2. estrutura de pastas e arquivos organizada;
+
+3. arquivos iniciais de HTML, CSS e JavaScript criados;
+
+4. scaffold do projeto commitado no repositório Git;
+
+10. Requisitos da terceira entrega
+
+A terceira entrega, no valor de 2,5 pontos, deverá conter a versão final do projeto implementado.
+
+Nessa etapa, o projeto deverá atender aos requisitos obrigatórios definidos neste enunciado, especialmente:
+
+1. mínimo de seis páginas;
+
+2. pelo menos quatro páginas com interação com o usuário por meio de eventos e manipulação do DOM;
+
+3. pelo menos uma página com manipulação completa do DOM;
+
+4. pelo menos uma página com uso de traversal/traversing no DOM;
+
+5. código organizado em arquivos HTML, CSS e JavaScript;
+
+6. projeto disponível no repositório Git indicado pelo grupo;
+
+7. commits realizados até a data de entrega da etapa.
+
+11. Apresentação final e avaliação individual
+
+A apresentação final, no valor de 7 pontos, ocorrerá em 03/06.
+
+Durante a apresentação, cada integrante poderá ser questionado individualmente sobre:
+
+- o código-fonte do projeto;
+- as funcionalidades implementadas;
+- os commits realizados;
+- a participação individual no desenvolvimento;
+- as decisões de organização do projeto;
+- a manipulação do DOM, os eventos e os recursos JavaScript utilizados.
+
+A avaliação individual poderá considerar a capacidade de cada integrante explicar o código, justificar suas contribuições e demonstrar participação efetiva no desenvolvimento do projeto.
+
+12. Regras sobre comentários no código
+
+Não deverão ser inseridos comentários explicativos no código-fonte do projeto.
+
+Caso seja identificado comentário no código, o integrante responsável pelo trecho poderá ter a nota zerada.
+
+13. Critérios de avaliação
+
+A avaliação considerará:
+
+1. cumprimento dos requisitos obrigatórios do projeto;
+
+2. funcionamento correto das páginas e das funcionalidades implementadas;
+
+3. organização do código HTML, CSS e JavaScript;
+
+4. uso adequado de eventos e manipulação do DOM;
+
+5. uso adequado de traversal/traversing no DOM;
+
+6. versionamento correto por meio do Git;
+
+7. realização dos commits dentro dos prazos definidos;
+
+8. participação individual dos integrantes;
+
+9. desempenho individual na apresentação e na arguição;
+
+10. implementação de funcionalidades adicionais, quando houver, conforme critérios definidos pelo professor.
+
+14. Regras sobre commits e repositório Git
+
+O projeto deverá ser versionado em um repositório Git.
+
+Cada grupo deverá utilizar o repositório informado nas entregas realizadas pelo Microsoft Teams.
+
+A avaliação de cada etapa considerará apenas os commits realizados até a respectiva data de entrega definida no cronograma.
+
+Commits realizados após a data de entrega de uma etapa não serão considerados para a avaliação daquela etapa.
+
+Caso os commits necessários para comprovar a realização da etapa estejam registrados apenas após a data de entrega correspondente, a etapa poderá receber nota zero.
+
+Cada integrante deverá realizar commits compatíveis com sua participação no desenvolvimento do projeto.
+
+Durante a apresentação, os commits poderão ser utilizados como evidência da participação individual de cada membro do grupo.
+
+15. Observações finais
+
+Todas as entregas deverão ser realizadas no prazo definido e por meio da atividade correspondente no Microsoft Teams.
+
+O arquivo de texto enviado em cada entrega deverá identificar claramente os membros do grupo e o repositório Git utilizado.
+
+O não cumprimento dos requisitos obrigatórios, das regras de entrega ou das regras de versionamento poderá impactar a nota do grupo e/ou a avaliação individual dos integrantes.
+
+A ausência de participação efetiva de um integrante poderá impactar sua avaliação individual, mesmo que o projeto do grupo seja entregue corretamente.

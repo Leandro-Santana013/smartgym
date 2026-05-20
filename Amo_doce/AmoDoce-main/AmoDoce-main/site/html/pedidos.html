@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Monte seu pedido na Amo Doce — adicione, edite e remova itens do seu carrinho.">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Monte seu Pedido — AmoDoce</title>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Ir para o conteúdo principal</a>
+
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="sr-only">Abrir menu de navegação</span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                    <li><a href="pedidos.html" class="button_fill nav-active">Fazer Pedido</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>Monte seu <span>Pedido</span></h1>
+        <p>Adicione seus itens favoritos e finalize pelo WhatsApp</p>
+    </section>
+
+    <main id="main" tabindex="-1">
+        <section class="pedidos-section">
+            <div class="pedidos-layout">
+
+                <div class="pedido-form-area">
+                    <h2 id="form-titulo">Adicionar Item</h2>
+                    <form id="form-pedido" novalidate>
+                        <input type="hidden" id="item-editando" value="">
+
+                        <div class="form-group">
+                            <label for="produto">Produto <span class="req" aria-hidden="true">*</span></label>
+                            <select id="produto" name="produto" required aria-required="true">
+                                <option value="" disabled selected>Selecione um produto</option>
+                                <option value="Copo da Felicidade — R$ 15,00">Copo da Felicidade — R$ 15,00</option>
+                                <option value="Copo de Chocolate — R$ 18,00">Copo de Chocolate — R$ 18,00</option>
+                                <option value="Bolo Vulcão — R$ 35,00">Bolo Vulcão — R$ 35,00</option>
+                                <option value="Bolo Caseiro — R$ 30,00">Bolo Caseiro — R$ 30,00</option>
+                                <option value="Bolo de Festa — R$ 80,00">Bolo de Festa — R$ 80,00</option>
+                                <option value="Cesta de Doces — R$ 50,00">Cesta de Doces — R$ 50,00</option>
+                            </select>
+                            <span class="erro-msg" id="erro-produto" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade <span class="req" aria-hidden="true">*</span></label>
+                            <input type="number" id="quantidade" name="quantidade" min="1" max="99" value="1" required aria-required="true">
+                            <span class="erro-msg" id="erro-quantidade" aria-live="polite"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="observacao">Observação</label>
+                            <textarea id="observacao" name="observacao" rows="3" placeholder="Ex: sem lactose, sabor especial..."></textarea>
+                        </div>
+
+                        <div class="form-acoes">
+                            <button type="submit" class="button_fill" id="btn-adicionar">
+                                <i class="fa-solid fa-plus"></i> Adicionar ao Pedido
+                            </button>
+                            <button type="button" class="btn-cancelar-edicao" id="btn-cancelar" style="display:none">
+                                Cancelar edição
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="pedido-lista-area">
+                    <div class="pedido-lista-header">
+                        <h2>Seu Pedido</h2>
+                        <span class="contador-itens" id="contador-itens" aria-live="polite">0 itens</span>
+                    </div>
+
+                    <div class="pedido-vazio" id="pedido-vazio">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <p>Seu pedido está vazio.</p>
+                        <p>Adicione itens usando o formulário ao lado.</p>
+                    </div>
+
+                    <table class="tabela-pedido" id="tabela-pedido" hidden>
+                        <thead>
+                            <tr>
+                                <th scope="col">Produto</th>
+                                <th scope="col">Qtd.</th>
+                                <th scope="col">Observação</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-pedido">
+                        </tbody>
+                    </table>
+
+                    <div class="pedido-total" id="pedido-total" hidden>
+                        <div class="total-linha">
+                            <span>Total estimado:</span>
+                            <strong id="valor-total">R$ 0,00</strong>
+                        </div>
+                        <div class="pedido-btn-finalizar">
+                            <a id="btn-whatsapp-pedido" href="#" class="btn-finalizar button_fill" target="_blank">
+                                <i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp
+                            </a>
+                            <button type="button" id="btn-limpar" class="btn-limpar">
+                                <i class="fa-solid fa-trash"></i> Limpar pedido
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <div>
+                <div>
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </div>
+                <p>Delícias artesanais, feito para você.</p>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Especialidades</h3>
+                <ul>
+                    <li>Copo da Felicidade</li>
+                    <li>Bolo Vulcão</li>
+                    <li>Bolo Caseiro</li>
+                </ul>
+            </div>
+        </section>
+        <p>© 2025 Amo Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5513974135864" class="btn-whatsapp-flutuante" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="sr-only">Falar conosco pelo WhatsApp</span>
+    </a>
+
+    <script src="../js/pedidos.js"></script>
+</body>
+
+</html>

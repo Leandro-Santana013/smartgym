@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Conheça a história da Amo Doce, confeitaria artesanal com amor em cada doce.">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Nossa História — AmoDoce</title>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Ir para o conteúdo principal</a>
+
+    <header>
+        <div class="topo">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </a>
+            </div>
+            <input type="checkbox" id="menu-toggle" class="menu-toggle">
+            <label for="menu-toggle" class="hamburger-menu">
+                <span class="sr-only">Abrir menu de navegação</span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html" class="nav-active">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                    <li><a href="pedidos.html" class="button_fill">Fazer Pedido</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <h1>Nossa <span>História</span></h1>
+        <p>Do hobby de fim de semana para a sua mesa</p>
+    </section>
+
+    <main id="main" tabindex="-1">
+
+        <section class="sobre-historia">
+            <div class="sobre-texto">
+                <h2>Do amor pela cozinha para a sua mesa</h2>
+                <p>O que era apenas um hobby de fim de semana se transformou na Amo Doce. Movidos pela vontade de adoçar o mundo, decidimos compartilhar nossas criações mais elogiadas com você.</p>
+                <p>Nosso compromisso é com a qualidade absoluta. Desde a escolha do cacau até a finalização das embalagens, cada etapa é executada com rigor e dedicação.</p>
+            </div>
+            <img src="../img/bolos.jpeg" alt="Bolos caseiros fresquinhos com coberturas generosas.">
+        </section>
+
+        <section class="numeros-section">
+            <h2>Amo Doce em números</h2>
+            <ul class="numeros-lista" id="numeros-lista">
+                <li class="numero-item">
+                    <span class="numero-valor" data-alvo="500">0</span>
+                    <span class="numero-label">Pedidos entregues</span>
+                </li>
+                <li class="numero-item">
+                    <span class="numero-valor" data-alvo="120">0</span>
+                    <span class="numero-label">Clientes satisfeitos</span>
+                </li>
+                <li class="numero-item">
+                    <span class="numero-valor" data-alvo="15">0</span>
+                    <span class="numero-label">Sabores no cardápio</span>
+                </li>
+                <li class="numero-item">
+                    <span class="numero-valor" data-alvo="3">0</span>
+                    <span class="numero-label">Anos de história</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="linha-do-tempo-section">
+            <h2>Nossa trajetória</h2>
+            <ol class="linha-do-tempo" id="linha-do-tempo">
+                <li class="evento-timeline">
+                    <div class="evento-ano">2022</div>
+                    <div class="evento-conteudo">
+                        <h3>O começo</h3>
+                        <p>Os primeiros bolos saíram do forno para amigos e familiares. A resposta foi tão positiva que a ideia de transformar o hobby em negócio nasceu.</p>
+                    </div>
+                </li>
+                <li class="evento-timeline">
+                    <div class="evento-ano">2023</div>
+                    <div class="evento-conteudo">
+                        <h3>Primeiras encomendas</h3>
+                        <p>Abrimos para encomendas no bairro e logo o boca a boca espalhou a Amo Doce para toda São Vicente.</p>
+                    </div>
+                </li>
+                <li class="evento-timeline">
+                    <div class="evento-ano">2024</div>
+                    <div class="evento-conteudo">
+                        <h3>Copo da Felicidade</h3>
+                        <p>Lançamos nosso produto mais famoso, o Copo da Felicidade, que rapidamente se tornou o queridinho dos clientes.</p>
+                    </div>
+                </li>
+                <li class="evento-timeline">
+                    <div class="evento-ano">2025</div>
+                    <div class="evento-conteudo">
+                        <h3>Crescimento</h3>
+                        <p>Expandimos as entregas para Santos, Praia Grande e região continental, levando mais doçura para mais pessoas.</p>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="faq-section">
+            <h2>Perguntas frequentes</h2>
+            <p class="faq-subtitulo">Clique em uma pergunta para ver a resposta.</p>
+            <ul class="faq-lista" id="faq-lista">
+                <li class="faq-item">
+                    <button class="faq-pergunta" aria-expanded="false" aria-controls="faq-1">
+                        Como faço um pedido?
+                        <i class="fa-solid fa-chevron-down faq-icone"></i>
+                    </button>
+                    <div class="faq-resposta" id="faq-1" hidden>
+                        <p>Você pode montar seu pedido aqui no site clicando em "Fazer Pedido" ou nos chamar diretamente pelo WhatsApp ou Instagram. Respondemos rapidinho!</p>
+                    </div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-pergunta" aria-expanded="false" aria-controls="faq-2">
+                        Qual o prazo de entrega?
+                        <i class="fa-solid fa-chevron-down faq-icone"></i>
+                    </button>
+                    <div class="faq-resposta" id="faq-2" hidden>
+                        <p>Trabalhamos com encomendas. O prazo mínimo é de 48 horas antes da data desejada. Para bolos de festa, recomendamos 72 horas.</p>
+                    </div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-pergunta" aria-expanded="false" aria-controls="faq-3">
+                        Vocês entregam em todo São Vicente?
+                        <i class="fa-solid fa-chevron-down faq-icone"></i>
+                    </button>
+                    <div class="faq-resposta" id="faq-3" hidden>
+                        <p>Sim! Entregamos em toda São Vicente, além de Santos, Praia Grande e área continental. Consulte as taxas de entrega na página inicial.</p>
+                    </div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-pergunta" aria-expanded="false" aria-controls="faq-4">
+                        Posso personalizar meu pedido?
+                        <i class="fa-solid fa-chevron-down faq-icone"></i>
+                    </button>
+                    <div class="faq-resposta" id="faq-4" hidden>
+                        <p>Com certeza! Adoramos personalizar. Você pode escolher sabores, coberturas e até pedir decorações temáticas para datas especiais.</p>
+                    </div>
+                </li>
+                <li class="faq-item">
+                    <button class="faq-pergunta" aria-expanded="false" aria-controls="faq-5">
+                        Quais as formas de pagamento?
+                        <i class="fa-solid fa-chevron-down faq-icone"></i>
+                    </button>
+                    <div class="faq-resposta" id="faq-5" hidden>
+                        <p>Aceitamos Pix, dinheiro e cartão de débito na entrega. Para encomendas de valor acima de R$ 50, solicitamos sinal de 50% no ato do pedido.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer>
+        <section>
+            <div>
+                <div>
+                    <img src="../img/logo.png" alt="Logo Amo Doce">
+                </div>
+                <p>Delícias artesanais, feito para você.</p>
+            </div>
+            <div>
+                <h3>Links</h3>
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Nossa História</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="avaliacoes.html">Avaliações</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Especialidades</h3>
+                <ul>
+                    <li>Copo da Felicidade</li>
+                    <li>Bolo Vulcão</li>
+                    <li>Bolo Caseiro</li>
+                </ul>
+            </div>
+        </section>
+        <p>© 2025 Amo Doce. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://api.whatsapp.com/send?phone=5513974135864" class="btn-whatsapp-flutuante" target="_blank">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="sr-only">Falar conosco pelo WhatsApp</span>
+    </a>
+
+    <script src="../js/sobre.js"></script>
+</body>
+
+</html>
