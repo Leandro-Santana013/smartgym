@@ -12,6 +12,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var btnCancelar = document.getElementById("btn-cancelar");
     var itemEditando = document.getElementById("item-editando");
     var formTitulo = document.getElementById("form-titulo");
+    
+    // Elementos do Simulador de Frete
+    var selectFrete = document.getElementById("frete-select");
+    var valorFreteEl = document.getElementById("valor-frete");
+    var valorSubtotalEl = document.getElementById("valor-subtotal");
 
     var proximoId = 1;
 
@@ -89,20 +94,52 @@ document.addEventListener("DOMContentLoaded", function () {
             pedidoVazio.style.display = "none";
             contadorItens.textContent = numItens + (numItens === 1 ? " item" : " itens");
 
-            var total = calcularTotal();
-            valorTotal.textContent = "R$ " + total.toFixed(2).replace(".", ",");
+            var subtotal = calcularTotal();
+            var taxaFrete = 0;
+            var regiaoNome = "Retirada no local";
+            
+            if (selectFrete) {
+                taxaFrete = parseFloat(selectFrete.value);
+                var selectedOption = selectFrete.options[selectFrete.selectedIndex];
+                regiaoNome = selectedOption ? selectedOption.text.split(" — ")[0] : "Retirada no local";
+            }
+
+            var totalGeral = subtotal + taxaFrete;
+
+            if (valorSubtotalEl) {
+                valorSubtotalEl.textContent = "R$ " + subtotal.toFixed(2).replace(".", ",");
+            }
+            if (valorFreteEl) {
+                valorFreteEl.textContent = taxaFrete === 0 ? "Grátis (Retirada)" : "R$ " + taxaFrete.toFixed(2).replace(".", ",");
+            }
+            valorTotal.textContent = "R$ " + totalGeral.toFixed(2).replace(".", ",");
 
             var resumo = "Olá, gostaria de fazer um pedido:%0A%0A";
+            resumo += "*Itens do Pedido:*%0A";
             for (var i = 0; i < linhas.length; i++) {
                 var celulas = linhas[i].querySelectorAll("td");
-                resumo += celulas[1].textContent + "x " + celulas[0].textContent;
+                resumo += "• " + celulas[1].textContent + "x " + celulas[0].textContent;
                 var obs = celulas[2].textContent;
                 if (obs) {
-                    resumo += " (" + obs + ")";
+                    resumo += " (Obs: " + obs + ")";
                 }
                 resumo += "%0A";
             }
-            resumo += "%0ATotal estimado: R$ " + total.toFixed(2).replace(".", ",");
+            
+            resumo += "%0A*Forma de Entrega:*%0A";
+            if (taxaFrete === 0) {
+                resumo += "Retirada no local (Grátis)%0A";
+            } else {
+                resumo += "Entrega: " + regiaoNome + " (Taxa: R$ " + taxaFrete.toFixed(2).replace(".", ",") + ")%0A";
+            }
+            
+            resumo += "%0A*Resumo Financeiro:*%0A";
+            resumo += "Subtotal: R$ " + subtotal.toFixed(2).replace(".", ",") + "%0A";
+            if (taxaFrete > 0) {
+                resumo += "Taxa de entrega: R$ " + taxaFrete.toFixed(2).replace(".", ",") + "%0A";
+            }
+            resumo += "*Total Estimado: R$ " + totalGeral.toFixed(2).replace(".", ",") + "*";
+            
             btnWhatsapp.href = "https://api.whatsapp.com/send?phone=5513974135864&text=" + resumo;
         }
     }
@@ -242,6 +279,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (erroSpan) erroSpan.textContent = "";
         });
     });
+
+    if (selectFrete) {
+        selectFrete.addEventListener("change", function () {
+            atualizarResumo();
+        });
+    }
 
     // Carrega o carrinho existente ou inicia um novo
     carregarCarrinho();

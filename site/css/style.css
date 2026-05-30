@@ -2055,3 +2055,83 @@ footer>p {
         gap: 10px;
     }
 }
+
+/* ==========================================================================
+   Simulador de Frete
+   ========================================================================== */
+.frete-container {
+    margin-bottom: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed #e1dbe6;
+}
+
+.frete-label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    font-weight: 700;
+}
+
+.frete-label i {
+    color: var(--cor-fundo);
+    margin-right: 6px;
+    font-size: 1.05rem;
+}
+
+.select-padrao {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.select-padrao:focus {
+    outline: none;
+    border-color: var(--cor-fundo);
+    box-shadow: 0 0 0 3px rgba(158, 41, 54, 0.15);
+}
+
+.total-detalhes {
+    margin-bottom: 22px;
+}
+
+.total-detalhes .total-linha {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+    color: #666;
+}
+
+.total-detalhes .total-linha span:first-child {
+    font-weight: 500;
+}
+
+.total-detalhes .total-linha span:last-child {
+    font-weight: 600;
+    color: #333;
+}
+
+.total-detalhes .total-geral {
+    border-top: 1px solid #e1dbe6;
+    padding-top: 15px;
+    margin-top: 12px;
+    margin-bottom: 0;
+    font-size: 1.15rem;
+}
+
+.total-detalhes .total-geral span:first-child {
+    color: #333;
+    font-weight: 700;
+}
+
+.total-detalhes .total-geral strong {
+    color: var(--cor-fundo);
+    font-size: 1.55rem;
+}

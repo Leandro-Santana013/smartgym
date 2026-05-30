@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -117,10 +117,36 @@
                     </table>
 
                     <div class="pedido-total" id="pedido-total" hidden>
-                        <div class="total-linha">
-                            <span>Total estimado:</span>
-                            <strong id="valor-total">R$ 0,00</strong>
+                        <div class="frete-container">
+                            <label for="frete-select" class="frete-label">
+                                <i class="fa-solid fa-truck"></i> Simular Entrega / Retirada:
+                            </label>
+                            <div class="frete-seletor">
+                                <select id="frete-select" name="frete-select" class="select-padrao">
+                                    <option value="0" selected>Retirada no local (Grátis)</option>
+                                    <option value="2">Vila Margarida — R$ 2,00</option>
+                                    <option value="5">Bairros Próximos (Esplanada, Bitaru, Beira Mar...) — R$ 5,00</option>
+                                    <option value="7">Demais Bairros de São Vicente — R$ 7,00</option>
+                                    <option value="12">Cidades Vizinhas (Santos, Praia Grande...) — R$ 12,00</option>
+                                </select>
+                            </div>
                         </div>
+
+                        <div class="total-detalhes">
+                            <div class="total-linha">
+                                <span>Subtotal dos itens:</span>
+                                <span id="valor-subtotal">R$ 0,00</span>
+                            </div>
+                            <div class="total-linha">
+                                <span>Taxa de entrega:</span>
+                                <span id="valor-frete">R$ 0,00</span>
+                            </div>
+                            <div class="total-linha total-geral">
+                                <span>Total estimado:</span>
+                                <strong id="valor-total">R$ 0,00</strong>
+                            </div>
+                        </div>
+
                         <div class="pedido-btn-finalizar">
                             <a id="btn-whatsapp-pedido" href="#" class="btn-finalizar button_fill" target="_blank">
                                 <i class="fa-brands fa-whatsapp"></i> Finalizar pelo WhatsApp
