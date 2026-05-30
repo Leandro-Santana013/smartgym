@@ -4,15 +4,25 @@ document.addEventListener("DOMContentLoaded", function () {
     var contador = document.getElementById("contador-resultados");
     var botoesSaibaMais = document.querySelectorAll(".btn-detalhes");
 
+    var campoBusca = document.getElementById("busca-produto");
+    var categoriaAtiva = "todos";
+    var buscaAtiva = "";
+
     function atualizarContador(visibles) {
         contador.textContent = visibles + " produto(s) encontrado(s)";
     }
 
-    function filtrar(categoria) {
+    function aplicarFiltros() {
         var visiveis = 0;
         for (var i = 0; i < cards.length; i++) {
             var card = cards[i];
-            if (categoria === "todos" || card.getAttribute("data-categoria") === categoria) {
+            var cat = card.getAttribute("data-categoria");
+            var titulo = card.querySelector("h2").textContent.toLowerCase();
+            
+            var matchCat = (categoriaAtiva === "todos" || cat === categoriaAtiva);
+            var matchBusca = titulo.includes(buscaAtiva);
+
+            if (matchCat && matchBusca) {
                 card.style.display = "";
                 card.classList.add("card-visivel");
                 visiveis++;
@@ -32,7 +42,15 @@ document.addEventListener("DOMContentLoaded", function () {
             }
             this.classList.add("ativo");
             this.setAttribute("aria-pressed", "true");
-            filtrar(this.getAttribute("data-filtro"));
+            categoriaAtiva = this.getAttribute("data-filtro");
+            aplicarFiltros();
+        });
+    }
+
+    if (campoBusca) {
+        campoBusca.addEventListener("input", function () {
+            buscaAtiva = this.value.toLowerCase().trim();
+            aplicarFiltros();
         });
     }
 
@@ -54,5 +72,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    filtrar("todos");
+    aplicarFiltros();
 });

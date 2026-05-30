@@ -1014,6 +1014,46 @@ footer>p {
     margin: 0 auto;
 }
 
+.busca-container {
+    display: flex;
+    max-width: 480px;
+    margin: 0 auto 20px auto;
+    position: relative;
+    align-items: center;
+}
+
+.busca-container input {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid #e0e0e0;
+    border-radius: 30px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.busca-container input:focus {
+    border-color: var(--cor-fundo);
+    box-shadow: 0 0 0 3px rgba(158, 41, 54, 0.15);
+}
+
+.busca-container i {
+    position: absolute;
+    left: 18px;
+    color: #888;
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.busca-container input:focus + i {
+    color: var(--cor-fundo);
+}
+
 .filtros {
     display: flex;
     flex-wrap: wrap;

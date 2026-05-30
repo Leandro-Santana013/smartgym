@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cardápio completo da Amo Doce — bolos, copinhos e muito mais doces artesanais.">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600&family=Nunito:wght@400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="../css/style.css">
     <title>Cardápio — AmoDoce</title>
@@ -48,6 +50,12 @@
 
     <main id="main" tabindex="-1">
         <section class="cardapio-section">
+            <div class="busca-container">
+                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+                <input type="search" id="busca-produto" placeholder="Buscar doce por nome..."
+                    aria-label="Buscar doce por nome">
+            </div>
+
             <div class="filtros" id="filtros" role="group" aria-label="Filtrar produtos por categoria">
                 <button class="filtro-btn ativo" data-filtro="todos" id="btn-todos">Todos</button>
                 <button class="filtro-btn" data-filtro="bolos" id="btn-bolos">🎂 Bolos</button>
@@ -59,12 +67,14 @@
 
             <ul class="cardapio-grid" id="cardapio-grid">
                 <li class="cardapio-card" data-categoria="copinhos">
-                    <img src="../img/Produtos/copo_da_felicidade_morango.png" alt="Copo da Felicidade de morango com camadas cremosas.">
+                    <img src="../img/Produtos/copo_da_felicidade_morango.png"
+                        alt="Copo da Felicidade de morango com camadas cremosas.">
                     <div class="card-body">
                         <span class="badge badge-copinhos">Copinhos</span>
                         <h2>Copo da Felicidade</h2>
                         <p>Camadas irresistíveis de creme suave, brownies e calda de morango.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-copo">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-copo">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-copo" hidden>
                             <li>Creme de baunilha</li>
                             <li>Frutas frescas</li>
@@ -73,17 +83,20 @@
                             <li>Granulado colorido</li>
                         </ul>
                         <p class="preco">A partir de R$ 15,00</p>
-                        <a href="pedidos.html?produto=Copo da Felicidade — R$ 15,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Copo da Felicidade — R$ 15,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
 
                 <li class="cardapio-card" data-categoria="bolos">
-                    <img src="../img/Produtos/Bolo_Vulcao_Morango.png" alt="Bolo Vulcão de chocolate com ganache e morangos.">
+                    <img src="../img/Produtos/Bolo_Vulcao_Morango.png"
+                        alt="Bolo Vulcão de chocolate com ganache e morangos.">
                     <div class="card-body">
                         <span class="badge badge-bolos">Bolos</span>
                         <h2>Bolo Vulcão</h2>
                         <p>Centro cremoso e cobertura abundante que escorre como um vulcão.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-vulcao">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-vulcao">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-vulcao" hidden>
                             <li>Massa de chocolate</li>
                             <li>Recheio de brigadeiro</li>
@@ -92,7 +105,8 @@
                             <li>Chantilly</li>
                         </ul>
                         <p class="preco">A partir de R$ 35,00</p>
-                        <a href="pedidos.html?produto=Bolo Vulcão — R$ 35,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Bolo Vulcão — R$ 35,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
 
@@ -102,7 +116,8 @@
                         <span class="badge badge-bolos">Bolos</span>
                         <h2>Bolo Caseiro</h2>
                         <p>O sabor autêntico da receita de vó, feito com ingredientes frescos.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-caseiro">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-caseiro">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-caseiro" hidden>
                             <li>Massa de baunilha ou chocolate</li>
                             <li>Recheio de goiabada</li>
@@ -110,7 +125,8 @@
                             <li>Cobertura de açúcar e canela</li>
                         </ul>
                         <p class="preco">A partir de R$ 30,00</p>
-                        <a href="pedidos.html?produto=Bolo Caseiro — R$ 30,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Bolo Caseiro — R$ 30,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
 
@@ -120,7 +136,8 @@
                         <span class="badge badge-especiais">Especiais</span>
                         <h2>Bolo de Festa</h2>
                         <p>Bolo personalizado para ocasiões especiais, decorado com muito carinho.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-festa">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-festa">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-festa" hidden>
                             <li>Massa personalizada</li>
                             <li>Recheio à escolha</li>
@@ -128,17 +145,20 @@
                             <li>Decoração temática</li>
                         </ul>
                         <p class="preco">A partir de R$ 80,00</p>
-                        <a href="pedidos.html?produto=Bolo de Festa — R$ 80,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Bolo de Festa — R$ 80,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
 
                 <li class="cardapio-card" data-categoria="copinhos">
-                    <img src="../img/Produtos/copo_da_felicidade_morango.png" alt="Copo de chocolate com camadas cremosas.">
+                    <img src="../img/Produtos/copo_da_felicidade_morango.png"
+                        alt="Copo de chocolate com camadas cremosas.">
                     <div class="card-body">
                         <span class="badge badge-copinhos">Copinhos</span>
                         <h2>Copo de Chocolate</h2>
                         <p>Layers de mousse de chocolate, brownie crocante e calda quente.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-choco">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-choco">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-choco" hidden>
                             <li>Mousse de chocolate</li>
                             <li>Brownie</li>
@@ -146,7 +166,8 @@
                             <li>Granulado belga</li>
                         </ul>
                         <p class="preco">A partir de R$ 18,00</p>
-                        <a href="pedidos.html?produto=Copo de Chocolate — R$ 18,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Copo de Chocolate — R$ 18,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
 
@@ -156,7 +177,8 @@
                         <span class="badge badge-especiais">Especiais</span>
                         <h2>Cesta de Doces</h2>
                         <p>Mix irresistível de brigadeiros, trufas e doces finos para presentear.</p>
-                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-cesta">Ver ingredientes</button>
+                        <button class="btn-detalhes" aria-expanded="false" aria-controls="detalhes-cesta">Ver
+                            ingredientes</button>
                         <ul class="ingredientes" id="detalhes-cesta" hidden>
                             <li>Brigadeiros tradicionais</li>
                             <li>Trufas de chocolate belga</li>
@@ -164,7 +186,8 @@
                             <li>Embalagem personalizada</li>
                         </ul>
                         <p class="preco">A partir de R$ 50,00</p>
-                        <a href="pedidos.html?produto=Cesta de Doces — R$ 50,00" class="button_fill btn-pedir">Pedir agora</a>
+                        <a href="pedidos.html?produto=Cesta de Doces — R$ 50,00" class="button_fill btn-pedir">Pedir
+                            agora</a>
                     </div>
                 </li>
             </ul>
