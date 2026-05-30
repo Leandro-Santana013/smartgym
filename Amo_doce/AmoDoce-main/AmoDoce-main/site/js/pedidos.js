@@ -15,6 +15,44 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var proximoId = 1;
 
+    function salvarCarrinho() {
+        var itens = [];
+        var linhas = tbodyPedido.querySelectorAll("tr");
+        for (var i = 0; i < linhas.length; i++) {
+            var celulas = linhas[i].querySelectorAll("td");
+            if (celulas.length >= 4) {
+                itens.push({
+                    id: linhas[i].getAttribute("data-id"),
+                    produto: celulas[0].textContent,
+                    quantidade: parseInt(celulas[1].textContent, 10),
+                    observacao: celulas[2].textContent
+                });
+            }
+        }
+        localStorage.setItem("amoDoceCarrinho", JSON.stringify(itens));
+    }
+
+    function carregarCarrinho() {
+        var cartData = localStorage.getItem("amoDoceCarrinho");
+        tbodyPedido.innerHTML = "";
+        if (cartData) {
+            try {
+                var itens = JSON.parse(cartData);
+                var maxId = 0;
+                itens.forEach(function (item) {
+                    var idInt = parseInt(item.id, 10);
+                    if (idInt > maxId) maxId = idInt;
+                    var linha = criarLinha(item.id, item.produto, item.quantidade, item.observacao);
+                    tbodyPedido.appendChild(linha);
+                });
+                proximoId = maxId + 1;
+            } catch (e) {
+                console.error("Erro ao carregar carrinho", e);
+            }
+        }
+        atualizarResumo();
+    }
+
     function extrairPreco(nomeProduto) {
         var partes = nomeProduto.split("R$ ");
         if (partes.length > 1) {
@@ -115,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var pai = linha.parentNode;
             pai.removeChild(linha);
             atualizarResumo();
+            salvarCarrinho();
         });
 
         tdAcoes.appendChild(btnEditar);
@@ -181,6 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         resetarFormulario();
         atualizarResumo();
+        salvarCarrinho();
     });
 
     btnCancelar.addEventListener("click", function () {
@@ -193,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         resetarFormulario();
         atualizarResumo();
+        salvarCarrinho();
     });
 
     form.querySelectorAll("input, select, textarea").forEach(function (campo) {
@@ -202,5 +243,67 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    atualizarResumo();
+    // Carrega o carrinho existente ou inicia um novo
+    carregarCarrinho();
+
+    // Captura o parâmetro do produto enviado pelo cardápio
+    var params = new URLSearchParams(window.location.search);
+    var produtoParam = params.get("produto");
+    if (produtoParam) {
+        // Valida se o produto existe no select
+        var selectProduto = document.getElementById("produto");
+        var opcaoExiste = false;
+        if (selectProduto) {
+            for (var i = 0; i < selectProduto.options.length; i++) {
+                if (selectProduto.options[i].value === produtoParam) {
+                    opcaoExiste = true;
+                    break;
+                }
+            }
+        }
+
+        if (opcaoExiste) {
+            // Verifica se o produto já existe no carrinho para apenas somar a quantidade
+            var trExistente = null;
+            var linhas = tbodyPedido.querySelectorAll("tr");
+            for (var i = 0; i < linhas.length; i++) {
+                var celulas = linhas[i].querySelectorAll("td");
+                if (celulas[0].textContent === produtoParam) {
+                    trExistente = linhas[i];
+                    break;
+                }
+            }
+
+            if (trExistente) {
+                var tdQtd = trExistente.querySelectorAll("td")[1];
+                var qtdAtual = parseInt(tdQtd.textContent, 10);
+                tdQtd.textContent = qtdAtual + 1;
+            } else {
+                var novaLinha = criarLinha(proximoId, produtoParam, 1, "");
+                proximoId++;
+                tbodyPedido.appendChild(novaLinha);
+            }
+
+            // Atualiza o resumo e salva o estado do carrinho
+            atualizarResumo();
+            salvarCarrinho();
+
+            // Limpa o parâmetro da URL para evitar inserções repetidas ao recarregar a página
+            window.history.replaceState({}, document.title, window.location.pathname);
+
+            // Rola suavemente até o carrinho e aplica uma animação de destaque
+            var listaArea = document.querySelector(".pedido-lista-area");
+            if (listaArea) {
+                listaArea.scrollIntoView({ behavior: "smooth" });
+                
+                var tabela = document.getElementById("tabela-pedido");
+                if (tabela) {
+                    tabela.classList.add("tabela-destaque");
+                    setTimeout(function () {
+                        tabela.classList.remove("tabela-destaque");
+                    }, 1500);
+                }
+            }
+        }
+    }
 });

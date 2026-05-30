@@ -1,4 +1,4 @@
-﻿html {
+html {
     scroll-behavior: smooth;
 }
 
@@ -962,17 +962,16 @@ footer>p {
     }
 }
 
-/* =============================================
-   NAV ACTIVE STATE
-   ============================================= */
 .nav-active {
     color: var(--cor-fundo);
     border-bottom: 2px solid var(--cor-fundo);
 }
 
-/* =============================================
-   PAGE HERO (cabeçalho interno de páginas)
-   ============================================= */
+.button_fill.nav-active {
+    color: white;
+    border-bottom: none;
+}
+
 .page-hero {
     background-image: url("../img/BackGroundCopy2.jpg");
     background-size: cover;
@@ -1286,6 +1285,30 @@ footer>p {
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.07);
     margin-bottom: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tabela-destaque {
+    animation: destaque-carrinho 1.5s ease-in-out;
+}
+
+@keyframes destaque-carrinho {
+    0% {
+        box-shadow: 0 0 0 rgba(158, 41, 54, 0);
+        transform: scale(1);
+    }
+    25% {
+        box-shadow: 0 0 25px rgba(158, 41, 54, 0.8);
+        transform: scale(1.02);
+    }
+    75% {
+        box-shadow: 0 0 25px rgba(158, 41, 54, 0.8);
+        transform: scale(1.02);
+    }
+    100% {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+        transform: scale(1);
+    }
 }
 
 .tabela-pedido thead th {
