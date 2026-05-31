@@ -51,44 +51,174 @@
             <div class="pedidos-layout">
 
                 <div class="pedido-form-area">
-                    <h2 id="form-titulo">Adicionar Item</h2>
-                    <form id="form-pedido" novalidate>
-                        <input type="hidden" id="item-editando" value="">
+                    <div class="form-tabs" role="tablist" aria-label="Opções de Pedido">
+                        <button type="button" class="tab-btn active" id="tab-pronto" role="tab" aria-selected="true" aria-controls="form-pronto-wrapper">Produtos do Cardápio</button>
+                        <button type="button" class="tab-btn" id="tab-personalizado" role="tab" aria-selected="false" aria-controls="form-personalizado-wrapper">Monte seu Doce</button>
+                    </div>
 
-                        <div class="form-group">
-                            <label for="produto">Produto <span class="req" aria-hidden="true">*</span></label>
-                            <select id="produto" name="produto" required aria-required="true">
-                                <option value="" disabled selected>Selecione um produto</option>
-                                <option value="Copo da Felicidade — R$ 15,00">Copo da Felicidade — R$ 15,00</option>
-                                <option value="Copo de Chocolate — R$ 18,00">Copo de Chocolate — R$ 18,00</option>
-                                <option value="Bolo Vulcão — R$ 35,00">Bolo Vulcão — R$ 35,00</option>
-                                <option value="Bolo Caseiro — R$ 30,00">Bolo Caseiro — R$ 30,00</option>
-                                <option value="Bolo de Festa — R$ 80,00">Bolo de Festa — R$ 80,00</option>
-                                <option value="Cesta de Doces — R$ 50,00">Cesta de Doces — R$ 50,00</option>
-                            </select>
-                            <span class="erro-msg" id="erro-produto" aria-live="polite"></span>
-                        </div>
+                    <div id="form-pronto-wrapper" role="tabpanel" aria-labelledby="tab-pronto">
+                        <h2 id="form-titulo">Adicionar Item</h2>
+                        <form id="form-pedido" novalidate>
+                            <input type="hidden" id="item-editando" value="">
 
-                        <div class="form-group">
-                            <label for="quantidade">Quantidade <span class="req" aria-hidden="true">*</span></label>
-                            <input type="number" id="quantidade" name="quantidade" min="1" max="99" value="1" required aria-required="true">
-                            <span class="erro-msg" id="erro-quantidade" aria-live="polite"></span>
-                        </div>
+                            <div class="form-group">
+                                <label for="produto">Produto <span class="req" aria-hidden="true">*</span></label>
+                                <select id="produto" name="produto" required aria-required="true">
+                                    <option value="" disabled selected>Selecione um produto</option>
+                                    <option value="Copo da Felicidade — R$ 15,00">Copo da Felicidade — R$ 15,00</option>
+                                    <option value="Copo de Chocolate — R$ 18,00">Copo de Chocolate — R$ 18,00</option>
+                                    <option value="Bolo Vulcão — R$ 35,00">Bolo Vulcão — R$ 35,00</option>
+                                    <option value="Bolo Caseiro — R$ 30,00">Bolo Caseiro — R$ 30,00</option>
+                                    <option value="Bolo de Festa — R$ 80,00">Bolo de Festa — R$ 80,00</option>
+                                    <option value="Cesta de Doces — R$ 50,00">Cesta de Doces — R$ 50,00</option>
+                                </select>
+                                <span class="erro-msg" id="erro-produto" aria-live="polite"></span>
+                            </div>
 
-                        <div class="form-group">
-                            <label for="observacao">Observação</label>
-                            <textarea id="observacao" name="observacao" rows="3" placeholder="Ex: sem lactose, sabor especial..."></textarea>
-                        </div>
+                            <div class="form-group">
+                                <label for="quantidade">Quantidade <span class="req" aria-hidden="true">*</span></label>
+                                <input type="number" id="quantidade" name="quantidade" min="1" max="99" value="1" required aria-required="true">
+                                <span class="erro-msg" id="erro-quantidade" aria-live="polite"></span>
+                            </div>
 
-                        <div class="form-acoes">
-                            <button type="submit" class="button_fill" id="btn-adicionar">
+                            <div class="form-group">
+                                <label for="observacao">Observação</label>
+                                <textarea id="observacao" name="observacao" rows="3" placeholder="Ex: sem lactose, sabor especial..."></textarea>
+                            </div>
+
+                            <div class="form-acoes">
+                                <button type="submit" class="button_fill" id="btn-adicionar">
+                                    <i class="fa-solid fa-plus"></i> Adicionar ao Pedido
+                                </button>
+                                <button type="button" class="btn-cancelar-edicao" id="btn-cancelar" style="display:none">
+                                    Cancelar edição
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="form-personalizado-wrapper" class="hidden-tab" role="tabpanel" aria-labelledby="tab-personalizado" hidden>
+                        <h2>Monte seu Doce</h2>
+                        <p class="form-subtitulo">Monte o seu próprio Copo da Felicidade ou Mini Bolo Vulcão!</p>
+                        
+                        <form id="form-pedido-personalizado" novalidate>
+                            <!-- Tipo de Doce -->
+                            <div class="form-section">
+                                <h3>1. Tipo de Doce</h3>
+                                <div class="options-grid">
+                                    <label class="card-option">
+                                        <input type="radio" name="custom-tipo" value="Copo Personalizado — R$ 15,00" data-preco="15" checked>
+                                        <div class="card-option-content">
+                                            <i class="fa-solid fa-glass-water"></i>
+                                            <span class="option-title">Copo da Felicidade</span>
+                                            <span class="option-price">R$ 15,00</span>
+                                        </div>
+                                    </label>
+                                    <label class="card-option">
+                                        <input type="radio" name="custom-tipo" value="Bolo Personalizado — R$ 30,00" data-preco="30">
+                                        <div class="card-option-content">
+                                            <i class="fa-solid fa-cake-candles"></i>
+                                            <span class="option-title">Mini Bolo Vulcão</span>
+                                            <span class="option-price">R$ 30,00</span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Base Cremosa -->
+                            <div class="form-section">
+                                <h3>2. Base Cremosa (Escolha 1)</h3>
+                                <div class="options-grid cols-2">
+                                    <label class="card-option-simple">
+                                        <input type="radio" name="custom-base" value="Creme Ninho" checked>
+                                        <span>Creme Ninho</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="radio" name="custom-base" value="Brigadeiro Tradicional">
+                                        <span>Brigadeiro Tradicional</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="radio" name="custom-base" value="Creme de Baunilha">
+                                        <span>Creme de Baunilha</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="radio" name="custom-base" value="Mousse de Chocolate">
+                                        <span>Mousse de Chocolate</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Recheios -->
+                            <div class="form-section">
+                                <h3>3. Recheios (Escolha até 3)</h3>
+                                <div class="options-grid cols-2">
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Brownie" data-preco="2">
+                                        <span>Brownie (+ R$ 2,00)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Morangos Frescos" data-preco="3">
+                                        <span>Morangos (+ R$ 3,00)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Uva Sem Semente" data-preco="3">
+                                        <span>Uva (+ R$ 3,00)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Cookies" data-preco="2">
+                                        <span>Cookies (+ R$ 2,00)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Creme de Nutella" data-preco="4">
+                                        <span>Nutella (+ R$ 4,00)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-recheio" value="Beijinho de Coco" data-preco="2">
+                                        <span>Beijinho (+ R$ 2,00)</span>
+                                    </label>
+                                </div>
+                                <span class="erro-msg" id="erro-recheios" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Toppings -->
+                            <div class="form-section">
+                                <h3>4. Toppings (Escolha até 2)</h3>
+                                <div class="options-grid cols-2">
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-topping" value="Granulado Belga" data-preco="1.5">
+                                        <span>Granulado Belga (+ R$ 1,50)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-topping" value="Leite Ninho em Pó" data-preco="0">
+                                        <span>Ninho em Pó (Grátis)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-topping" value="Confetes de Chocolate" data-preco="1.5">
+                                        <span>Confetes (+ R$ 1,50)</span>
+                                    </label>
+                                    <label class="card-option-simple">
+                                        <input type="checkbox" name="custom-topping" value="Raspas de Chocolate" data-preco="0">
+                                        <span>Raspas de Choco (Grátis)</span>
+                                    </label>
+                                </div>
+                                <span class="erro-msg" id="erro-toppings" aria-live="polite"></span>
+                            </div>
+
+                            <!-- Resumo -->
+                            <div class="custom-resumo-card">
+                                <h4>Resumo da Montagem:</h4>
+                                <p id="custom-resumo-texto">Base: Creme Ninho</p>
+                                <div class="custom-total-linha">
+                                    <span>Preço total do doce:</span>
+                                    <strong id="custom-preco-total">R$ 15,00</strong>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="button_fill btn-adicionar-custom" id="btn-adicionar-personalizado">
                                 <i class="fa-solid fa-plus"></i> Adicionar ao Pedido
                             </button>
-                            <button type="button" class="btn-cancelar-edicao" id="btn-cancelar" style="display:none">
-                                Cancelar edição
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="pedido-lista-area">

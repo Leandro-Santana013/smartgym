@@ -193,7 +193,10 @@ document.addEventListener("DOMContentLoaded", function () {
             salvarCarrinho();
         });
 
-        tdAcoes.appendChild(btnEditar);
+        // Oculta o botão de Editar para doces personalizados para evitar inconsistência de formulário
+        if (produto.indexOf("Personalizado") === -1) {
+            tdAcoes.appendChild(btnEditar);
+        }
         tdAcoes.appendChild(btnRemover);
 
         tr.appendChild(tdProduto);
@@ -284,6 +287,186 @@ document.addEventListener("DOMContentLoaded", function () {
         selectFrete.addEventListener("change", function () {
             atualizarResumo();
         });
+    }
+
+    // Alternância de Abas do Formulário
+    var tabPronto = document.getElementById("tab-pronto");
+    var tabPersonalizado = document.getElementById("tab-personalizado");
+    var formProntoWrapper = document.getElementById("form-pronto-wrapper");
+    var formPersonalizadoWrapper = document.getElementById("form-personalizado-wrapper");
+
+    if (tabPronto && tabPersonalizado) {
+        tabPronto.addEventListener("click", function () {
+            tabPronto.classList.add("active");
+            tabPronto.setAttribute("aria-selected", "true");
+            tabPersonalizado.classList.remove("active");
+            tabPersonalizado.setAttribute("aria-selected", "false");
+            formProntoWrapper.hidden = false;
+            formProntoWrapper.classList.remove("hidden-tab");
+            formPersonalizadoWrapper.hidden = true;
+            formPersonalizadoWrapper.classList.add("hidden-tab");
+        });
+
+        tabPersonalizado.addEventListener("click", function () {
+            tabPersonalizado.classList.add("active");
+            tabPersonalizado.setAttribute("aria-selected", "true");
+            tabPronto.classList.remove("active");
+            tabPronto.setAttribute("aria-selected", "false");
+            formPersonalizadoWrapper.hidden = false;
+            formPersonalizadoWrapper.classList.remove("hidden-tab");
+            formProntoWrapper.hidden = true;
+            formProntoWrapper.classList.add("hidden-tab");
+        });
+    }
+
+    // Lógica do Construtor de Doce Personalizado
+    var formCustom = document.getElementById("form-pedido-personalizado");
+    var customResumoTexto = document.getElementById("custom-resumo-texto");
+    var customPrecoTotal = document.getElementById("custom-preco-total");
+    var erroRecheios = document.getElementById("erro-recheios");
+    var erroToppings = document.getElementById("erro-toppings");
+
+    function atualizarDocePersonalizado() {
+        if (!formCustom) return;
+
+        // Tipo selecionado
+        var tipoInput = formCustom.querySelector("input[name='custom-tipo']:checked");
+        var tipoPreco = parseFloat(tipoInput.getAttribute("data-preco"));
+        var tipoNome = tipoInput.value.split(" — ")[0]; // "Copo Personalizado" ou "Bolo Personalizado"
+
+        // Base selecionada
+        var baseInput = formCustom.querySelector("input[name='custom-base']:checked");
+        var baseNome = baseInput ? baseInput.value : "Nenhum";
+
+        // Recheios selecionados
+        var recheiosChecked = formCustom.querySelectorAll("input[name='custom-recheio']:checked");
+        var recheiosPreco = 0;
+        var recheiosNomes = [];
+
+        recheiosChecked.forEach(function (input) {
+            recheiosPreco += parseFloat(input.getAttribute("data-preco"));
+            recheiosNomes.push(input.value);
+        });
+
+        // Toppings selecionados
+        var toppingsChecked = formCustom.querySelectorAll("input[name='custom-topping']:checked");
+        var toppingsPreco = 0;
+        var toppingsNomes = [];
+
+        toppingsChecked.forEach(function (input) {
+            toppingsPreco += parseFloat(input.getAttribute("data-preco"));
+            toppingsNomes.push(input.value);
+        });
+
+        // Calcular preço final
+        var precoFinal = tipoPreco + recheiosPreco + toppingsPreco;
+        
+        // Atualizar preço na tela
+        if (customPrecoTotal) {
+            customPrecoTotal.textContent = "R$ " + precoFinal.toFixed(2).replace(".", ",");
+        }
+
+        // Atualizar texto de resumo
+        var resumoTexto = "Base: " + baseNome;
+        if (recheiosNomes.length > 0) {
+            resumoTexto += " | Recheios: " + recheiosNomes.join(", ");
+        } else {
+            resumoTexto += " | Recheios: Nenhum";
+        }
+        if (toppingsNomes.length > 0) {
+            resumoTexto += " | Toppings: " + toppingsNomes.join(", ");
+        } else {
+            resumoTexto += " | Toppings: Nenhum";
+        }
+        
+        if (customResumoTexto) {
+            customResumoTexto.textContent = resumoTexto;
+        }
+
+        return {
+            tipoNome: tipoNome,
+            preco: precoFinal,
+            observacao: resumoTexto
+        };
+    }
+
+    if (formCustom) {
+        // Escuta mudanças gerais no formulário
+        formCustom.addEventListener("change", function () {
+            atualizarDocePersonalizado();
+        });
+
+        // Limitar recheios a no máximo 3
+        var recheiosCheckboxes = formCustom.querySelectorAll("input[name='custom-recheio']");
+        recheiosCheckboxes.forEach(function (cb) {
+            cb.addEventListener("click", function (e) {
+                var checkedCount = formCustom.querySelectorAll("input[name='custom-recheio']:checked").length;
+                if (checkedCount > 3) {
+                    e.preventDefault();
+                    if (erroRecheios) {
+                        erroRecheios.textContent = "Escolha no máximo 3 recheios.";
+                    }
+                } else {
+                    if (erroRecheios) erroRecheios.textContent = "";
+                }
+            });
+        });
+
+        // Limitar toppings a no máximo 2
+        var toppingsCheckboxes = formCustom.querySelectorAll("input[name='custom-topping']");
+        toppingsCheckboxes.forEach(function (cb) {
+            cb.addEventListener("click", function (e) {
+                var checkedCount = formCustom.querySelectorAll("input[name='custom-topping']:checked").length;
+                if (checkedCount > 2) {
+                    e.preventDefault();
+                    if (erroToppings) {
+                        erroToppings.textContent = "Escolha no máximo 2 toppings.";
+                    }
+                } else {
+                    if (erroToppings) erroToppings.textContent = "";
+                }
+            });
+        });
+
+        // Adição do doce personalizado ao carrinho
+        formCustom.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            var dados = atualizarDocePersonalizado();
+            var produtoNome = dados.tipoNome + " — R$ " + dados.preco.toFixed(2).replace(".", ",");
+            var observacao = dados.observacao;
+
+            // Cria linha na tabela e adiciona
+            var novaLinha = criarLinha(proximoId, produtoNome, 1, observacao);
+            proximoId++;
+            tbodyPedido.appendChild(novaLinha);
+
+            // Atualiza o resumo financeiro geral e salva no localStorage
+            atualizarResumo();
+            salvarCarrinho();
+
+            // Reseta o construtor personalizado
+            formCustom.reset();
+            if (erroRecheios) erroRecheios.textContent = "";
+            if (erroToppings) erroToppings.textContent = "";
+            atualizarDocePersonalizado(); // Restaura resumo padrão
+
+            // Rola suavemente até a sacola de pedidos com animação de destaque
+            var listaArea = document.querySelector(".pedido-lista-area");
+            if (listaArea) {
+                listaArea.scrollIntoView({ behavior: "smooth" });
+                var tabela = document.getElementById("tabela-pedido");
+                if (tabela) {
+                    tabela.classList.add("tabela-destaque");
+                    setTimeout(function () {
+                        tabela.classList.remove("tabela-destaque");
+                    }, 1500);
+                }
+            }
+        });
+
+        // Inicializa o resumo no carregamento
+        atualizarDocePersonalizado();
     }
 
     // Carrega o carrinho existente ou inicia um novo
